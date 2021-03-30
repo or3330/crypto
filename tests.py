@@ -1,7 +1,6 @@
 import unittest
 from tx_pool import TxPool
 
-
 def convert_dict_to_mempool_format(desc):
     new_desc = dict()
     for i, tx_desc in enumerate(desc):
@@ -110,3 +109,4 @@ class MyTestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
