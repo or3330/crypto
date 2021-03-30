@@ -1,63 +1,75 @@
 import unittest
-from TxPool import TxPool
+from tx_pool import TxPool
 
-test1= [{"from": "shahar",
-        "gasPrice": "1",
-        "nonce": "0"},
-        {"from": "shahar",
-        "gasPrice": "100",
-        "nonce": "1"},
-       {"from": "shahar",
-        "gasPrice": "300",
-        "nonce": "2"},
-       {"from": "shahar",
-        "gasPrice": "1",
-        "nonce": "3"},
-       {"from": "shahar",
-        "gasPrice": "1",
-        "nonce": "4"},
-       {"from": "shahar",
-        "gasPrice": "1",
-        "nonce": "5"},
-       {"from": "shahar",
-        "gasPrice": "1",
-        "nonce": "6"},
-       {"from": "or",
-        "gasPrice": "50",
-        "nonce": "1"},
-       {"from": "or",
-        "gasPrice": "1",
-        "nonce": "2"},
-       {"from": "or",
-        "gasPrice": "1",
-        "nonce": "3"},
-       {"from": "or",
-        "gasPrice": "400",
-        "nonce": "4"},
-       {"from": "or",
-        "gasPrice": "1",
-        "nonce": "5"},
-       {"from": "or",
-        "gasPrice": "1",
-        "nonce": "6"},
-       ]
-test2= [{"from": "shahar",
-        "gasPrice": "1",
-        "nonce": "0"},
-        {"from": "shahar",
-        "gasPrice": "100",
-        "nonce": "1"},
-       {"from": "or",
-        "gasPrice": "1",
-        "nonce": "1"},
-       {"from": "or",
-        "gasPrice": "50",
-        "nonce": "2"},
-       {"from": "or",
-        "gasPrice": "150",
-        "nonce": "3"}
-       ]
-t1 = TxPool(test1)
+
+def convert_dict_to_mempool_format(desc):
+    new_desc = dict()
+    for i, tx_desc in enumerate(desc):
+        new_desc[i] = {i: tx_desc}
+    return new_desc
+
+
+test1 = [
+    {"from": "shahar",
+     "gasPrice": "1",
+     "nonce": "0"},
+    {"from": "shahar",
+     "gasPrice": "100",
+     "nonce": "1"},
+    {"from": "shahar",
+     "gasPrice": "300",
+     "nonce": "2"},
+    {"from": "shahar",
+     "gasPrice": "1",
+     "nonce": "3"},
+    {"from": "shahar",
+     "gasPrice": "1",
+     "nonce": "4"},
+    {"from": "shahar",
+     "gasPrice": "1",
+     "nonce": "5"},
+    {"from": "shahar",
+     "gasPrice": "1",
+     "nonce": "6"},
+    {"from": "or",
+     "gasPrice": "50",
+     "nonce": "1"},
+    {"from": "or",
+     "gasPrice": "1",
+     "nonce": "2"},
+    {"from": "or",
+     "gasPrice": "1",
+     "nonce": "3"},
+    {"from": "or",
+     "gasPrice": "400",
+     "nonce": "4"},
+    {"from": "or",
+     "gasPrice": "1",
+     "nonce": "5"},
+    {"from": "or",
+     "gasPrice": "1",
+     "nonce": "6"}
+]
+
+test2 = [{"from": "shahar",
+          "gasPrice": "1",
+          "nonce": "0"},
+         {"from": "shahar",
+          "gasPrice": "100",
+          "nonce": "1"},
+         {"from": "or",
+          "gasPrice": "1",
+          "nonce": "1"},
+         {"from": "or",
+          "gasPrice": "50",
+          "nonce": "2"},
+         {"from": "or",
+          "gasPrice": "150",
+          "nonce": "3"}
+         ]
+
+t1 = TxPool(convert_dict_to_mempool_format(test1))
+
 
 class MyTestCase(unittest.TestCase):
     def test1(self):
@@ -96,7 +108,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(859, profit, "Test5 failed!")
 
 
-
-unittest.main()
-
-
+if __name__ == '__main__':
+    unittest.main()
