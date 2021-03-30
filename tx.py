@@ -8,10 +8,10 @@ class Tx:
         :param tx_desc:
         """
         self.tx_id = tx_id
-        self.nonce = int(tx_desc[Settings.NONCE])
+        self.nonce = int(tx_desc[Settings.NONCE], 16)
         self.from_address = tx_desc[Settings.FROM]
-        self.gas_price = int(tx_desc[Settings.GAS_PRICE])
-        self.gas = int(tx_desc.get(Settings.GAS, 0))
+        self.gas_price = int(tx_desc[Settings.GAS_PRICE], 16)
+        self.gas = int(tx_desc.get(Settings.GAS, 0), 16)
         self.desc = tx_desc
 
     @property
