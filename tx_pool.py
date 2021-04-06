@@ -58,6 +58,17 @@ class TxPool:
     def __remove_tx_from_list(self, tuple_tx):
         self.tx_dict[tuple_tx[from_i]] = self.tx_dict[tuple_tx[from_i]][tuple_tx[num_tx_i]:]
 
+    def count_txs_by_senders(self):
+        total_senders = 0
+        more_than_one_tx_sender = 0
+
+        for key in self.tx_dict:
+            total_senders += 1
+            if len(self.tx_dict[key]) > 1:
+                more_than_one_tx_sender += 1
+
+        return more_than_one_tx_sender, total_senders
+
     def choose_txs(self, look_ahead, avg_tx_in_block):
         """
         TODO: add documentation
