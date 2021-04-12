@@ -22,6 +22,8 @@ if __name__ == '__main__':
 
     temp_dir = tempfile.mkdtemp()
 
+    number_of_snapshots = 0
+
     while(1):
         # Extacting the mempool to a temp dir
         now = datetime.now()
@@ -41,5 +43,7 @@ if __name__ == '__main__':
 
             copyfile(file_path, os.path.join(MEMPOOL_DIR, file_name))
         print(file_path)
+        print(number_of_snapshots)
+        number_of_snapshots += 1
         os.remove(file_path)
         sleep(60)    
